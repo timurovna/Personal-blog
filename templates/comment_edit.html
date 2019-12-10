@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2> Comment editing </h2>
+    <form method="post" action="/edited_comment_submit">
+        <textarea style="margin-left: 50px" name="comment" rows="3" cols="40">{{text}}</textarea><br>
+        <input type="hidden" name="comment_id" value="{{comment_id}}">
+        <input style="margin-left: 50px" type="submit" value="Edit">
+    </form><br>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Latest posts</h1>
+    <form method="post" action="/post_submit">
+        <i>Write post heading...</i><br>
+        <textarea name="heading" rows="3" cols="40"></textarea><br>
+        <i>Write post text...</i><br>
+        <textarea name="text" rows="10" cols="40"></textarea><br>
+        <input type="submit" value="Post">
+    </form>
+
+    {% for p in posts: %}
+        <h3>{{p.heading}}</h3>
+        <p>{{p.text}}</p>
+        <p><i>{{"posted by " + p.author}}</i></p>
+        <p>{{p.date}}</p>
+        <form method="post" action="/liked">
+            <input type="submit" value="Like">
+        </form><br>
+        <a href="/delete_post?post_id={{p.id}}">Delete</a>
+        <a href="/edit_post?post_id={{p.id}}">Edit</a><br><br>
+
+
+        <form method="post" action="/comment_submit">
+                <textarea style="margin-left: 50px" name="comment" rows="3" cols="40">Write your comment...</textarea><br>
+                <input type="hidden" name="post_id" value="{{p.id}}">
+                <input style="margin-left: 50px" type="submit" value="Submit">
+            </form><br>
+            {% for c in comments: %}
+                {% if c.post_id == p.id %}
+                <div style="margin-left: 50px"><i>{{c.author+ " "}}</i></div>
+                <div style="margin-left: 50px"><i>{{c.text + " "}}</i></div>
+                <div style="margin-left: 50px"><i>{{c.date}}</i></div>
+                <a style="margin-left: 50px" href="/comment_delete?comment_id={{c.id}}">Delete</a>
+                <a href="/comment_edit?comment_id={{c.id}}">Edit</a><br><br>
+                {% endif %}
+            {% endfor %}
+    {%endfor%}
+
+
+</body>
+</html>

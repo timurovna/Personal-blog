@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2><a href="https://www.google.com/"> about me </a></h2>
+    <h2><a href="http://127.0.0.1:5000/my_posts"> my posts </a></h2>
+    <h2><a href="https://www.google.com/"> gallery </a></h2>
+    <h2><a href="https://www.google.com/"> FAQ </a></h2>
+    {%if current_user.is_authenticated %}
+        <h2 style="margin-left: 400px"><a href="http://www.google.com"><b>{{"Hi, " + current_user.first_name}}</b></a></h2>
+        <h2 style="margin-left: 400px"><a href="http:////127.0.0.1:5000/sign_out"><b>SIGN OUT</b></a>
+     {%else%}
+    <h2><a style="margin-left: 250px; margin-top: 50px" href="http://127.0.0.1:5000/sign_in"> SIGN IN </a>
+    <h2><a style="margin-left: 250px; margin-top: 50px" href="http://127.0.0.1:5000/sign_up"> SIGN UP </a>
+    {%endif%}
+</body>
+</html>
